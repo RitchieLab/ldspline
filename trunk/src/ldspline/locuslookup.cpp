@@ -116,7 +116,7 @@ void LocusLookup::SkimBinaryHeader() {
 	char chrom[] = "       ";
 	locusCount = 0;
 	file->read(chrom, 4);
-	chromosome = Utility::StripTrailingWhitespace(chrom);
+	chromosome = LDUtility::StripTrailingWhitespace(chrom);
 	file->read((char*)&locusCount, 4);
 	headerLoadPosition = file->tellg();
 	
@@ -144,7 +144,7 @@ void LocusLookup::LoadBinaryHeader() {
 	char chrom[] = "       ";
 	locusCount = 0;
 	file->read(chrom, 4);
-	chromosome = Utility::StripTrailingWhitespace(chrom);
+	chromosome = LDUtility::StripTrailingWhitespace(chrom);
 	file->read((char*)&locusCount, 4);
 	headerLoadPosition = file->tellg();
 	LoadLocusDetails();
@@ -514,9 +514,9 @@ void LocusLookup::LoadHeadersFromHapmap(const char* filename) {
 		file>>pos1>>pos2>>pop>>rs1>>rs2>>dp>>rs>>lod>>junk;
 
 		if (pos1 > 0) {
-			int rsid = Utility::ExtractRsNumber(rs1.c_str());
+			int rsid = LDUtility::ExtractRsNumber(rs1.c_str());
 			AddLocus(rsid, pos1, offset);
-			rsid = Utility::ExtractRsNumber(rs2.c_str());
+			rsid = LDUtility::ExtractRsNumber(rs2.c_str());
 			AddLocus(rsid, pos2, offset);
 			IncrementSplineCounts(pos1, pos2);
 

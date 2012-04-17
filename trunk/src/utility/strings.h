@@ -7,7 +7,7 @@
 #include <sstream>
 #include <iostream>
 
-namespace Utility {
+namespace LDUtility {
 
 #ifdef WIN32 
 #define DIR_SLASH "\\"

@@ -15,7 +15,7 @@
 #include <string>
 #include <iostream>
 
-namespace Utility {
+namespace LDUtility {
 
 namespace Exception {
 

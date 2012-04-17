@@ -21,7 +21,7 @@
 #include <map>
 #include <cstring>
 
-namespace Utility {
+namespace LDUtility {
 
 using namespace std;
 

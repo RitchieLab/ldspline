@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
 	}
 
 	std::string cmd = argv[1];
-	std::string dataFilename = Utility::StripExtension(argv[2]);
+	std::string dataFilename = LDUtility::StripExtension(argv[2]);
 	std::string rawFilename = argv[2];
 
 	if (cmd == "load") {
@@ -119,7 +119,7 @@ int main(int argc, char **argv) {
 	else if (cmd == "export-lomap") {
 		LdSpline ldspline;
 		ldspline.OpenBinary(std::string(dataFilename + ".ldspline").c_str());
-		std::string loFilename = Utility::ExtractBaseFilename(argv[2]) + ".bim";
+		std::string loFilename = LDUtility::ExtractBaseFilename(argv[2]) + ".bim";
 		ldspline.ExportForLiftOver(loFilename.c_str());
 		std::cerr<<"Lift over output: "<<loFilename<<"\n";
 	}
@@ -127,8 +127,8 @@ int main(int argc, char **argv) {
 		LdSpline ldspline;
 		ldspline.OpenBinary(std::string(dataFilename + ".ldspline").c_str(), true);
 
-		std::string loFilename = Utility::ExtractBaseFilename(argv[2]) + ".new";
-		std::string loUnmapped = Utility::ExtractBaseFilename(argv[2]) + ".unmapped";
+		std::string loFilename = LDUtility::ExtractBaseFilename(argv[2]) + ".new";
+		std::string loUnmapped = LDUtility::ExtractBaseFilename(argv[2]) + ".unmapped";
 		std::cerr<<"Loading position data from "<<loFilename<<"\t"<<loUnmapped<<"\n";
 		ldspline.ImportLiftOver(loFilename.c_str(), loUnmapped.c_str());
 		ldspline.SaveToCopyBinary(std::string(dataFilename + "-b" + std::string(argv[3]) + ".ldspline").c_str());

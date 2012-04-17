@@ -368,7 +368,7 @@ std::string LdSpline::ConvertHaploLD(const char *filename) {
 	}
 
 
-	std::string newFilename = std::string(Utility::ExtractBaseFilename(filename)) + ".ldspline";
+	std::string newFilename = std::string(LDUtility::ExtractBaseFilename(filename)) + ".ldspline";
 	SaveToBinary(newFilename.c_str());
 
 	return newFilename;

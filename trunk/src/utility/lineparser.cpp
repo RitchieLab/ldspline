@@ -11,7 +11,7 @@
 //
 #include "lineparser.h"
 #include "exception.h"
-namespace Utility {
+namespace LDUtility {
 
 uint LineParser::Parse(const char *filename, AsciiParser *parser, bool keepComments) {
 	char line[MAX_LINE_LENGTH];

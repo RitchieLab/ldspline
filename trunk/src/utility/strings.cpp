@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <cstring>
 
-namespace Utility {
+namespace LDUtility {
 
 #ifdef WIN32 
 const char *seperators ="\\/";

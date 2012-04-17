@@ -49,7 +49,7 @@ float drand48 ();
 #endif
 
 
-namespace Utility {
+namespace LDUtility {
 
 
 
