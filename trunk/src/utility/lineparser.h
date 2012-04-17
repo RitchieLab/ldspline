@@ -19,7 +19,7 @@
 #include "types.h"
 #include "strings.h"
 #include <map>
-
+#include <cstring>
 
 namespace Utility {
 

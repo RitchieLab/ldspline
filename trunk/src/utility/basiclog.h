@@ -15,6 +15,7 @@
 #include <fstream>
 #include <iostream>
 #include "types.h"
+#include <cstring>
 
 namespace Utility {
 

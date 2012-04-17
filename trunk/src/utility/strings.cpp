@@ -9,6 +9,7 @@
 #include <fstream>
 #include <cctype>
 #include <algorithm>
+#include <cstring>
 
 namespace Utility {
 

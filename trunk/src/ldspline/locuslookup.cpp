@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include "utility/strings.h"
+#include <cstring>
 
 namespace Spline {
 

@@ -11,7 +11,7 @@
 //
 #include "executionlog.h"
 #include "strings.h"
-
+#include <cstring>
 
 namespace Utility {
 

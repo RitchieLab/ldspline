@@ -2,6 +2,8 @@
 #include <vector>
 #include <fstream>
 
+#include <stdint.h>
+
 namespace Spline {
 
 struct LdStat {

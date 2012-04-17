@@ -12,7 +12,7 @@
 #include "genobplookup.h"
 
 #include <assert.h>
-
+#include <cstdio>
 namespace Utility {
 
 

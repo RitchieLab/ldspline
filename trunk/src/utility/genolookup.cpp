@@ -11,6 +11,7 @@
 //
 #include "genolookup.h"
 #include <assert.h>
+#include <cstdio>
 
 namespace Utility {
 
