@@ -118,7 +118,7 @@ int main(int argc, char **argv) {
 	}
 	else if (cmd == "export-lomap") {
 		LdSpline ldspline;
-		ldspline.OpenBinary(std::string(dataFilename + ".ldspline").c_str());
+		ldspline.OpenBinary(std::string(dataFilename + ".ldspline").c_str(), true);
 		std::string loFilename = LDUtility::ExtractBaseFilename(argv[2]) + ".bim";
 		ldspline.ExportForLiftOver(loFilename.c_str());
 		std::cerr<<"Lift over output: "<<loFilename<<"\n";

@@ -372,7 +372,7 @@ std::pair<int, int> LocusLookup::GetRangeBoundariesDP(int start, int stop, float
 	std::map<int, int>::iterator lb = posToIdx.upper_bound(start-1);
 	std::map<int, int>::iterator ub = posToIdx.upper_bound(stop);
 
-	uint posToIdxSize = posToIdx.size();
+	//uint posToIdxSize = posToIdx.size();
 
 	while (lb != ub) {
 		SnpSpline &sp = loci[lb->second];
