@@ -189,7 +189,7 @@ public:
 	 * Returns the chromosome as it is named
     * @return
     */
-	std::string Chromosome();
+	std::string Chromosome() const;
 
 	/**
 	 * Summarize the contents of the spline, providing details such as chromosome, rs/bp location

@@ -276,7 +276,7 @@ void LocusLookup::DumpBinary(std::fstream* file) {
 	}
 
 }
-std::string LocusLookup::Chromosome() {
+std::string LocusLookup::Chromosome() const {
 	return chromosome;
 }
 

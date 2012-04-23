@@ -4,7 +4,7 @@ libldspline_la_LIBADD = \
 	../utility/libld_utility.la
 
 AM_CPPFLAGS = \
-	-I$(srcdir)/..
+	-I$(srcdir)/.. 
 
 libldspline_la_SOURCES = \
 	ldspline.h \
@@ -20,3 +20,4 @@ bin_PROGRAMS = ldspline
 ldspline_SOURCES = 	main.cpp
 	
 ldspline_LDADD = ../utility/libld_utility.la libldspline.la
+	
