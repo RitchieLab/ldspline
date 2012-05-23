@@ -273,7 +273,7 @@ void LdSpline::OpenBinary(const char *filename, bool loadFullHeaders) {
 /**
  * A, data abstraction at it's finest:) or something like that
  */
-std::map<std::string, LocusLookup> LdSpline::GetChromosomes() {
+std::map<std::string, LocusLookup>& LdSpline::GetChromosomes() {
 	return loci;
 }
 

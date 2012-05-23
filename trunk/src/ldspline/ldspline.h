@@ -151,7 +151,7 @@ public:
 	 * Returns the spline lookup for a given chromosome. This is useful for repeated queries
     * @return
     */
-	std::map<std::string, LocusLookup> GetChromosomes();
+	std::map<std::string, LocusLookup>& GetChromosomes();
 private:
 	std::map<std::string, LocusLookup> loci;										///< This is how we record our loci. The spline will return only indexes
 	std::map<std::string, std::string> filenames;								///< Used to record the hapmap files so that we can parse them for LD after we've set up the headerspace
