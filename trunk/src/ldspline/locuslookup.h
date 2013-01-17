@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdint.h>
 #include "snpspline.h"
+#include <string>
 #include <set>
 
 namespace Spline {
@@ -145,7 +146,7 @@ public:
 	 * capture any LD values). This first pass IS REQUIRED
     * @param filename
     */
-	void LoadHeadersFromHapmap(const char *filename);
+	void LoadHeadersFromHapmap(const std::string& filename);
 
 	/**
 	 * Load actual pairwise LD from the hapmap files

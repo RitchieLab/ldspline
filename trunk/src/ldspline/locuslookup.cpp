@@ -5,6 +5,7 @@
 #include <sstream>
 #include "utility/strings.h"
 #include <cstring>
+#include <boost/algorithm/string.hpp>
 
 namespace Spline {
 
@@ -503,7 +504,25 @@ LocusLookup::SplineLookup LocusLookup::GetLdSplineRS(int pos, float dp) {
 	return positions;
 }
 
-void LocusLookup::LoadHeadersFromHapmap(const char* filename) {
+void LocusLookup::LoadHeadersFromHapmap(const std::string& filename) {
+
+	int extPos = filename.find_last_of('.');
+	std::string ext = filename.substr(extPos+1);
+
+	bool isCompressed = (boost::iequals(ext, "gz") || boost::iequals(ext, "z"));
+
+	std::ifstream* inFilePtr = 0;
+	std::ifstream inF(filename, (ios_base::binary & isCompressed));
+	filtering_streambuf<input> in;
+
+	if(isCompressed){
+	    in.push(zlib_decompressor());
+	    in.push(inF);
+	    inFilePtr = &in;
+	}else{
+		inFilePtr = &inF;
+	}
+
 	std::ifstream file(filename);
 	int offset = 0;							// chrom count offset
 	while (file.good() && !file.eof()) {
@@ -511,7 +530,7 @@ void LocusLookup::LoadHeadersFromHapmap(const char* filename) {
 		std::string pop = "", rs1 = "", rs2 = "", junk = "";
 		float dp = -1.0, rs = -1.0, lod = -1.0;
 
-		file>>pos1>>pos2>>pop>>rs1>>rs2>>dp>>rs>>lod>>junk;
+		(*inFilePtr)>>pos1>>pos2>>pop>>rs1>>rs2>>dp>>rs>>lod>>junk;
 
 		if (pos1 > 0) {
 			int rsid = LDUtility::ExtractRsNumber(rs1.c_str());
