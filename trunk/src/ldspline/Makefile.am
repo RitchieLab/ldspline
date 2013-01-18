@@ -1,10 +1,12 @@
 noinst_LTLIBRARIES = libldspline.la
 
 libldspline_la_LIBADD = \
-	../utility/libld_utility.la
+	../utility/libld_utility.la $(BOOST_IOSTREAMS_LIB)
 
 AM_CPPFLAGS = \
-	-I$(srcdir)/.. 
+	-I$(srcdir)/..
+	
+AM_LDFLAGS=$(BOOST_LDFLAGS)
 
 libldspline_la_SOURCES = \
 	ldspline.h \
@@ -18,6 +20,7 @@ libldspline_la_SOURCES = \
 bin_PROGRAMS = ldspline
 
 ldspline_SOURCES = 	main.cpp
+
+ldspline_LDADD = ./libldspline.la ../utility/libld_utility.la $(BOOST_IOSTREAMS_LIB)
 	
-ldspline_LDADD = ../utility/libld_utility.la libldspline.la
 	

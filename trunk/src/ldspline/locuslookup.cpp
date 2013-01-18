@@ -6,6 +6,9 @@
 #include "utility/strings.h"
 #include <cstring>
 #include <boost/algorithm/string.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/zlib.hpp>
+
 
 namespace Spline {
 
@@ -511,26 +514,23 @@ void LocusLookup::LoadHeadersFromHapmap(const std::string& filename) {
 
 	bool isCompressed = (boost::iequals(ext, "gz") || boost::iequals(ext, "z"));
 
-	std::ifstream* inFilePtr = 0;
-	std::ifstream inF(filename, (ios_base::binary & isCompressed));
-	filtering_streambuf<input> in;
+	std::ifstream inF(filename.c_str(), isCompressed ? std::ios_base::binary : std::ios_base::in);
+	boost::iostreams::filtering_stream<boost::iostreams::input> in;
 
 	if(isCompressed){
-	    in.push(zlib_decompressor());
-	    in.push(inF);
-	    inFilePtr = &in;
-	}else{
-		inFilePtr = &inF;
+	    in.push(boost::iostreams::zlib_decompressor());
 	}
+	in.push(inF);
 
-	std::ifstream file(filename);
+
+	std::ifstream file(filename.c_str());
 	int offset = 0;							// chrom count offset
 	while (file.good() && !file.eof()) {
 		int pos1 = -1, pos2 = -1;
 		std::string pop = "", rs1 = "", rs2 = "", junk = "";
 		float dp = -1.0, rs = -1.0, lod = -1.0;
 
-		(*inFilePtr)>>pos1>>pos2>>pop>>rs1>>rs2>>dp>>rs>>lod>>junk;
+		in>>pos1>>pos2>>pop>>rs1>>rs2>>dp>>rs>>lod>>junk;
 
 		if (pos1 > 0) {
 			int rsid = LDUtility::ExtractRsNumber(rs1.c_str());

@@ -8,7 +8,7 @@ AM_INIT_AUTOMAKE([1.8 foreign])
 AC_CONFIG_SRCDIR([src/ldspline/main.cpp])
 AC_CONFIG_HEADER([config.h])
 
-RL_CONFIGURE([1.29],[HAVE_BOOST])
+RL_CONFIGURE([1.29],[HAVE_BOOST HAVE_BOOST_IOSTREAMS])
 
 AC_CONFIG_FILES([Makefile
                  src/ldspline/Makefile
