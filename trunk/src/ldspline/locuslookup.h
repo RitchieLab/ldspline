@@ -152,7 +152,7 @@ public:
 	 * Load actual pairwise LD from the hapmap files
     * @param filename
     */
-	void LoadLdFromHapmap(const char *filename);
+	void LoadLdFromHapmap(const std::string& filename);
 	/**
 	 * Writes out locus details for lift over in BIM format
     * @param os

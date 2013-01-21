@@ -545,16 +545,27 @@ void LocusLookup::LoadHeadersFromHapmap(const std::string& filename) {
 }
 
 
-void LocusLookup::LoadLdFromHapmap(const char *filename) {
-	std::ifstream file(filename);
+void LocusLookup::LoadLdFromHapmap(const std::string& filename) {
 
-	while (file.good() && !file.eof()) {
+	int extPos = filename.find_last_of('.');
+	std::string ext = filename.substr(extPos+1);
+
+	bool isCompressed = (boost::iequals(ext, "gz") || boost::iequals(ext, "z"));
+	std::ifstream inF(filename.c_str(), isCompressed ? std::ios_base::binary : std::ios_base::in);
+	boost::iostreams::filtering_stream<boost::iostreams::input> in;
+
+	if(isCompressed){
+	    in.push(boost::iostreams::gzip_decompressor());
+	}
+	in.push(inF);
+
+	while (in.good() && !in.eof()) {
 
 		int pos1 = -1, pos2 = -1;
 		std::string pop = "", rs1 = "", rs2 = "", junk = "";
 		float dp = -1.0, rs = -1.0, lod = -1.0;
 
-		file>>pos1>>pos2>>pop>>rs1>>rs2>>dp>>rs>>lod>>junk;
+		in>>pos1>>pos2>>pop>>rs1>>rs2>>dp>>rs>>lod>>junk;
 		if (pos1 > 0 && pos2 > 0)
 			AddLdValue(pos1, pos2, dp,rs);
 
