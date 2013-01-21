@@ -522,10 +522,8 @@ void LocusLookup::LoadHeadersFromHapmap(const std::string& filename) {
 	}
 	in.push(inF);
 
-
-	std::ifstream file(filename.c_str());
 	int offset = 0;							// chrom count offset
-	while (file.good() && !file.eof()) {
+	while (inF.good() && !inF.eof()){
 		int pos1 = -1, pos2 = -1;
 		std::string pop = "", rs1 = "", rs2 = "", junk = "";
 		float dp = -1.0, rs = -1.0, lod = -1.0;
