@@ -182,7 +182,7 @@ int64_t LocusLookup::DumpBinaryHeader(std::fstream *file, int64_t offset) {
 		int rs = itr->rs;
 		int pos = itr->pos;
 
-		assert((int64_t)itr->offset == offset);
+		//assert((int64_t)itr->offset == offset);
 		itr->offset = offset;
 		file->write((char*)&rs, 4);
 		file->write((char*)&pos, 4);
