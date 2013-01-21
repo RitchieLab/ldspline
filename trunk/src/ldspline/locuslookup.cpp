@@ -7,7 +7,7 @@
 #include <cstring>
 #include <boost/algorithm/string.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
-#include <boost/iostreams/filter/zlib.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
 
 
 namespace Spline {
@@ -518,7 +518,7 @@ void LocusLookup::LoadHeadersFromHapmap(const std::string& filename) {
 	boost::iostreams::filtering_stream<boost::iostreams::input> in;
 
 	if(isCompressed){
-	    in.push(boost::iostreams::zlib_decompressor());
+	    in.push(boost::iostreams::gzip_decompressor());
 	}
 	in.push(inF);
 
