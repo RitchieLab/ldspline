@@ -1,7 +1,7 @@
 noinst_LTLIBRARIES = libld_utility.la
 
 AM_CPPFLAGS = \
-	-I$(top_srcdir)/src $(BOOST_CPP_FLAGS)
+	-I$(top_srcdir)/src $(BOOST_CPPFLAGS)
 
 libld_utility_la_SOURCES = 	\
 	lineparser.h \
