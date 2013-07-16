@@ -4,7 +4,7 @@ libldspline_la_LIBADD = \
 	../utility/libld_utility.la $(BOOST_IOSTREAMS_LIB)
 
 AM_CPPFLAGS = \
-	-I$(srcdir)/..
+	-I$(srcdir)/.. $(BOOST_CPPFLAGS)
 	
 AM_LDFLAGS=$(BOOST_LDFLAGS)
 
